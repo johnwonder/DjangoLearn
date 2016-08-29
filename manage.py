@@ -1,9 +1,15 @@
 #!/usr/bin/env python
 import os
 import sys
-
+from testdemo import execute_from_command
 if __name__ == "__main__":
-    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "testdemo.settings")
+    # manage.py self call,will be print __main__
+    execute_from_command(sys.argv)
+    print(__name__)
+    print(os.path.abspath(__file__))
+    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "mysite.settings")
+    # If key is in the dictionary, return its value. If not, insert key with a value of default and return default. default defaults to None.
+    print(os.environ.get('DJANGO_SETTINGS_MODULE'))#os.environ is dict mysite.settings
     try:
         from django.core.management import execute_from_command_line
     except ImportError:
@@ -20,3 +26,5 @@ if __name__ == "__main__":
             )
         raise
     execute_from_command_line(sys.argv)
+    # execute_from_command_line call ManagementUtility.execute method
+    #
