@@ -1,3 +1,4 @@
+# coding=utf-8 ##以utf-8编码储存中文字符
 #!/usr/bin/env python
 import os
 import sys
@@ -7,7 +8,7 @@ if __name__ == "__main__":
     execute_from_command(sys.argv)
     print(__name__)
     print(os.path.abspath(__file__))
-    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "mysite.settings")
+    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "testdemo.settings")
     # If key is in the dictionary, return its value. If not, insert key with a value of default and return default. default defaults to None.
     print(os.environ.get('DJANGO_SETTINGS_MODULE'))#os.environ is dict mysite.settings
     try:
@@ -16,6 +17,7 @@ if __name__ == "__main__":
         # The above import may fail for some other reason. Ensure that the
         # issue is really that Django is missing to avoid masking other
         # exceptions on Python 2.
+        #避免掩盖
         try:
             import django
         except ImportError:
